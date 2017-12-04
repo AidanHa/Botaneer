@@ -696,7 +696,7 @@ int main() {
 		}
 		////////////////////////////////////////////////////////////////////////WATERS THE PLANT IF NEEDED/////////////////////////////////////////////////////////////////////////////////
 		if (counter % 5 == 0) {
-			if (theBotaneer.waterPlant(humidity, theBotaneer.getHumidityCap())) {
+			if (theBotaneer.waterPlant(humidity, theBotaneer.getHumidityCap())) {//if plants needs watering
 				gpioPin.setPin(1);//turns on motor
 				oled.systemStatus(1);		// System is watering plant
 				
@@ -706,7 +706,7 @@ int main() {
 				oled.systemStatus(2);	// System is sleeping
 				sleep(3);
 				oled.systemStatus(0);
-				logInfo((char *) "The plant was watered at this time. The humidity of the plant was: "); //PUT SOME FUCKING TIME OF DAY FUNCTIONS
+				logInfo((char *) "The plant was watered at this time. The humidity of the plant was: "); 
 				logInt(humidity);
 				cout <<  "The plant was watered at this time. The humidity of the plant was: " << humidity << endl;
 				gpioPin.cleanPin();
@@ -718,7 +718,7 @@ int main() {
 			cout << "The plant does not need watering at this time" << endl;
 			sleep(6);
 		}
-		if (!theBotaneer.tempOverexceed(temperature, theBotaneer.getTempCapMin(), theBotaneer.getTempCapMax())) {
+		if (!theBotaneer.tempOverexceed(temperature, theBotaneer.getTempCapMin(), theBotaneer.getTempCapMax())) {//if temperature isnt suitable
 			
 			oled.temperatureStatus(false);
 			
@@ -765,7 +765,6 @@ int main() {
 			}	
 		}
 		counter++;
-		//PRINT SOME SHIT ON THE OLED HERE THIS PART JUST DISPLAYS THE TEMP AND HUMIDITY SENSOR HERE
 	}
 	return 0;
 }
